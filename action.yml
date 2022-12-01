@@ -126,12 +126,8 @@ runs:
 
         start()'
 
-        git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
-        git config --global user.name "${GITHUB_ACTOR}"
-        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        if (git diff --shortstat | grep '[0-9]'); then \
-          git add /home/runner/work/${GITHUB_REPOSITORY}/${GITHUB_REPOSITORY}/README.md; \
-          git commit -m "Push from GitHub Actions"; \
-          git push origin HEAD:${GITHUB_REF}; \
-        fi
+    - name: GitHub Commit & Push
+      uses: actions-js/push@v1.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
