@@ -20,6 +20,7 @@ runs:
         cache: maven
 
     - name: Run Maven
+      shell: bash
       run: mvn -DoutputFile=mvn_dependency_tree.txt dependency:tree
 
     - name: Setup Python
@@ -29,9 +30,11 @@ runs:
         architecture: 'x64'
 
     - name: Run Python
+      shell: python
       run: python generate-dependency-badge.py
 
     - name: Push from GitHub Actions
+      shell: bash
       run: |
         git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         git config --global user.name "${GITHUB_ACTOR}"
@@ -41,3 +44,4 @@ runs:
           git commit -m "Push from GitHub Actions"; \
           git push origin HEAD:${GITHUB_REF}; \
         fi
+        
