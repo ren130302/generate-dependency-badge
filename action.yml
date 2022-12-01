@@ -27,9 +27,9 @@ runs:
 
     - name: Run
       shell: bash
-      run: mvn -DoutputFile=mvn_dependency_tree.txt dependency:tree
-      
       run: |
+        mvn -DoutputFile=mvn_dependency_tree.txt dependency:tree
+      
         python -c 'def _dependency(line):
 
           if not line.count(" ") <= settings["level"]:
@@ -126,7 +126,6 @@ runs:
 
         start()'
 
-      run: |
         git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         git config --global user.name "${GITHUB_ACTOR}"
         git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
