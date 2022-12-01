@@ -19,19 +19,16 @@ runs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Run Maven
-      shell: bash
-      run: mvn -DoutputFile=mvn_dependency_tree.txt dependency:tree
-      
-      
     - name: Setup Python
       uses: actions/setup-python@v2.3.3
       with:
         python-version: '3.8'
         architecture: 'x64'
 
-    - name: Run Python
+    - name: Run
       shell: bash
+      run: mvn -DoutputFile=mvn_dependency_tree.txt dependency:tree
+      
       run: |
         python -c 'def _dependency(line):
 
@@ -128,10 +125,7 @@ runs:
         }
 
         start()'
-      
-      
-    - name: Push from GitHub Actions
-      shell: bash
+
       run: |
         git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         git config --global user.name "${GITHUB_ACTOR}"
