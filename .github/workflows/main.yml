@@ -30,7 +30,7 @@ jobs:
           architecture: 'x64'
   
       - name: Run Python
-        run: python badge_dependency_version.py
+        run: python generate-dependency-badge.py
 
       - name: Push from GitHub Actions
         run: |
