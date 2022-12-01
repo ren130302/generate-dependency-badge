@@ -32,7 +32,9 @@ runs:
 
     - name: Run Python
       shell: bash
-      run: python ./generate-dependency-badge.py
+      run: |
+        pytest
+        python ./generate-dependency-badge.py
       
       
     - name: Push from GitHub Actions
