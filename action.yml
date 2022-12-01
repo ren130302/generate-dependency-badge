@@ -1,0 +1,10 @@
+name: 'Generate Dependency Badge'
+author: 'ren130302'
+description: 'Put the dependency badge in README.md'
+
+branding:
+  icon: "link"
+  color: "green"
+
+runs:
+  using: 'composite'
