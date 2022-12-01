@@ -1,0 +1,14 @@
+name: 'Generate Dependency Badge'
+
+on:
+  push:
+    paths: ["pom.xml"]
+  workflow_dispatch:
+
+jobs:
+  generate-dependency-badge:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 'Generate Dependency Badge'
+      uses: ren130302/generate-dependency-badge@test
