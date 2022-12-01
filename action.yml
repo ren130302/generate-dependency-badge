@@ -33,7 +33,7 @@ runs:
     - name: Run Python
       shell: bash
       run: |
-        python -c def _dependency(line):
+        python -c 'def _dependency(line):
 
           if not line.count(" ") <= settings["level"]:
               return None
@@ -127,7 +127,7 @@ runs:
             "level": 2
         }
 
-        start()
+        start()'
       
       
     - name: Push from GitHub Actions
