@@ -32,7 +32,7 @@ runs:
 
     - name: Run Python
       shell: bash
-      run: python /home/runner/work/ASAP/ASAP/generate-dependency-badge.py
+      run: python ./generate-dependency-badge.py
       
       
     - name: Push from GitHub Actions
