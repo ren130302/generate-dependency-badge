@@ -31,13 +31,7 @@ runs:
       
     - name: Write README.md
       shell: bash
-      run: |
-        yourfilenames=`ls ./*.py`
-        for eachfile in $yourfilenames
-        do
-           echo $eachfile
-        done
-        python "./badge_dependency_version.py"
+      run: python "./badge_dependency_version.py"
         
     - name: Push README.md
       shell: bash
