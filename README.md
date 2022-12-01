@@ -1,4 +1,4 @@
-# generate-dependency-badge
+# Generate Dependency Badge
 ```yml
 name: 'Generate Dependency Badge'
 
