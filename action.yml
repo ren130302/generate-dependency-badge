@@ -118,16 +118,21 @@ runs:
             with open("README.md","w", encoding="utf8") as readme:
                 readme.writelines(txt)
         settings = {
-            "mavenTreeFilename":"/home/runner/work/ASAP/ASAP/mvn_dependency_tree.txt",
+            "mavenTreeFilename":"/home/runner/work/${GITHUB_REPOSITORY}/${GITHUB_REPOSITORY}/mvn_dependency_tree.txt",
             "start_dependecies":"<!-- start dependencies -->",
             "end_dependecies":"<!-- end dependencies -->",
             "level": 2
         }
 
         start()'
-
-    - name: GitHub Commit & Push
-      uses: actions-js/push@v1.3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
+        
+    - name: Push README.md
+      shell: bash
+      run: |
+        git config --global user.name "${GITHUB_ACTOR}"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        if (git diff --shortstat | grep '[0-9]'); then \
+          git add -A 
+          git commit -m "Push from GitHub Actions"; \
+          git push "https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF}; \
+        fi
