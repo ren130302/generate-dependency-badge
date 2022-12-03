@@ -16,7 +16,7 @@ jobs:
       uses: ren130302/generate-dependency-badge@v1
 ```
 
-Required description in README.md
+The following text must be included in README.md.
 ```md
 <!-- start dependencies -->
 <!-- end dependencies -->
